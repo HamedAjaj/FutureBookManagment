@@ -11,5 +11,6 @@
         public string? Sort { get; set; }
         public string? title { get; set; }
         public string? author { get; set; }
+        public string? GenreName { get; set; }
     }
 }

@@ -2,8 +2,10 @@
 using FutureOFTask.Domain.Entities.Identity;
 using FutureOFTask.Extensions;
 using FutureOFTask.Repository.Data;
+using FutureOFTask.Repository.Data.DataSeeding;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FutureOFTask
 {
@@ -19,12 +21,14 @@ namespace FutureOFTask
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
             builder.Services.AddApplicationServices();
+            builder.Services.AddIdentityServices(builder.Configuration);
+
             var connectionString = builder.Configuration.GetConnectionString("BookConnection") ??
                     throw new InvalidOperationException("Error in Database Connection");
             builder.Services.AddDbContext<BookDbContext>(options => options.UseSqlServer(connectionString));
             
-            builder.Services.AddIdentityServices(builder.Configuration);
 
 
 
@@ -40,7 +44,10 @@ namespace FutureOFTask
                 var dbContext = services.GetRequiredService<BookDbContext>();
                 await dbContext.Database.MigrateAsync();
                 var userManager = services.GetRequiredService<UserManager<AppUser>>();
-                await AppIdentitySeedUser.SeedUsersAsync(userManager);
+                var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                await AppIdentitySeed.SeedUsersAsync(userManager,roleManager);
+                await AppIdentitySeed.SeedRoles(services);
+                await SeedGenres.SeedAsync(dbContext);
             }
             catch (Exception ex)
             {
@@ -57,9 +64,10 @@ namespace FutureOFTask
 
             app.UseHttpsRedirection();
 
+
+            app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();

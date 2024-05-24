@@ -2,14 +2,14 @@
 using FutureOFTask.Domain.Entities.Identity;
 using FutureOFTask.Dtos;
 using FutureOFTask.Service.TokenService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace FutureOFTask.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class AccountsController : BaseAPIController
     {
         private readonly UserManager<AppUser> _userManager;
@@ -41,21 +41,16 @@ namespace FutureOFTask.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var map = _mapper.Map<RegisterDto,AppUser>(registerDto);
-            map.UserName = registerDto.Email.Split('@')[0];
+            var mappedUser = _mapper.Map<RegisterDto,AppUser>(registerDto);
+            mappedUser.UserName = registerDto.Email.Split('@')[0];
 
             if(await _userManager.FindByEmailAsync(registerDto.Email) != null)
                 return BadRequest(new {Message="Email Already Exists"});
 
-            var result = await _userManager.CreateAsync(map, registerDto.Password);
+            var result = await _userManager.CreateAsync(mappedUser, registerDto.Password);
             if (!result.Succeeded) return BadRequest(result.Errors);
-
-            return Ok(new UserDto()
-            {
-                Name = map.Name,
-                Email = map.Email,
-                Token = await _tokenService.CreateTokenAsync(map, _userManager)
-            });
+            await _userManager.AddToRoleAsync(mappedUser, "User");
+            return Ok(new { Message = "user Added Successfully :) " });
         }
 
         [HttpPost("login")]
@@ -73,6 +68,20 @@ namespace FutureOFTask.Controllers
                 Token = await _tokenService.CreateTokenAsync(user, _userManager)
             });
         }
+
+        [HttpGet("user")]
+        [Authorize]
+        public async Task<ActionResult<UserDto>> GetCurrentUser()
+        {
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            var user = await _userManager.FindByEmailAsync(email);
+            return Ok(new UserDto()
+            {
+                Email = email,
+                Name = user.Name
+            });
+        }
+
 
         #endregion
     }

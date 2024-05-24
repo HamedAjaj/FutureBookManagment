@@ -11,6 +11,7 @@ namespace FutureOFTask.Extensions
     {
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
         {
+
             services.AddIdentity<AppUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = true;
@@ -39,6 +40,7 @@ namespace FutureOFTask.Extensions
                         ValidateLifetime = true,
                     };
                 });
+
 
             return services;
         }

@@ -12,6 +12,7 @@ namespace FutureOFTask.Domain.ISpecifications
         public int Skip { get; set; }
         public int Take { get; set; }
         public bool IsPaginationEnabled { get; set; }
+        public Expression<Func<T, object>> Average { get; set; }
 
         public BaseSpecification()
         { }

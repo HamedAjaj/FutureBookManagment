@@ -12,7 +12,9 @@ namespace FutureOFTask.Repository.Config
             builder.Property(p => p.ISBN).IsRequired();
             builder.Property(p => p.Title).IsRequired().HasMaxLength(100);
             builder.Property(p => p.PublicationDate).IsRequired();
-            builder.Property(p => p.Genre).IsRequired();
+            builder.Property(p => p.GenreId).IsRequired();
+            builder.HasOne(g=>g.Genre).WithMany(b=>b.Books)
+                .HasForeignKey(b=>b.GenreId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
