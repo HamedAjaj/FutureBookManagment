@@ -2,6 +2,7 @@
 using FutureOFTask.Helper;
 using FutureOFTask.Repository.GenericRepo;
 using FutureOFTask.Repository.UnitOfWork;
+using FutureOFTask.Service.BookService;
 using FutureOFTask.Service.TokenService;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +15,7 @@ namespace FutureOFTask.Extensions
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IBookService, BookService>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 

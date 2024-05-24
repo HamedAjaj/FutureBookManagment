@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-
+﻿using FutureOFTask.Domain.Entities;
 namespace FutureOFTask.Dtos
 {
     public class BookDto
@@ -9,6 +8,9 @@ namespace FutureOFTask.Dtos
         public string Author { get; set; }
         public string ISBN { get; set; }
         public DateTimeOffset PublicationDate { get; set; }
-        public string Genre { get; set; }
+
+        public Guid GenreId { get; set; }
+        public string? GenreName { get; set; }
+        public double rate { get; set; }
     }
 }

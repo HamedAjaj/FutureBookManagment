@@ -9,7 +9,9 @@ namespace FutureOFTask.Domain.Entities
         public string Author { get; set; }
         public string ISBN { get; set; }
         public DateTimeOffset PublicationDate { get; set; }
-        public string Genre { get; set; }
+        public Guid GenreId { get; set; }
+        public Genre Genre { get; set; }
+        public ICollection<Rating> Ratings { get; set; }
 
     }
 }
