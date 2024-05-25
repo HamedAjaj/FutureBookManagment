@@ -8,19 +8,19 @@ Project created to be maintainable  reusable, testable ,scalable , DRY principle
 		- Helpers [ MappingProfile , Response class]
 		- Controllers
 		- DTOs
-    - Extensions for some methods
-    - Helpers
-        - MappingProfile AutomMapper
+    		- Extensions for some methods
+    		- Helpers
+        		- MappingProfile AutomMapper
 ####	2 - Domain Layer 
 		- Entities  [ SQL Server Provider ]
-    - ISpecification Pattern
-    - IUnitOfWork
-    - Enums
+    		- ISpecification Pattern
+   		- IUnitOfWork
+    		- Enums
 ###	3 - Repository Layer or called 'Infrastructure'
 		- packages 
-    - GenericRepository Interfaces and Implementations
-    - Specifications Implementation of ISpecification at Domain
-    - Unit Of work
+    		- GenericRepository Interfaces and Implementations
+    		- Specifications Implementation of ISpecification at Domain
+    		- Unit Of work
 		- Config
 			- To apply constraints of Entity at Domain using fluent API instead of Data Annotation [Code Style ]
    		- Data
@@ -30,8 +30,8 @@ Project created to be maintainable  reusable, testable ,scalable , DRY principle
 		- Implementation to Access Data Source
 ###	4 - Service Layer 
 		- Business logic on data before sending to repository
-    - Book Service [ Interface and Implementation ]
-    - Token Service [ Interface and implementation  ]
+    		- Book Service [ Interface and Implementation ]
+    		- Token Service [ Interface and implementation  ]
 
 
 ###  Execute  update-database automatically without make it manually [ manually => 'update-database' ]  
