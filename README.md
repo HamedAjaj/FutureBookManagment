@@ -33,7 +33,7 @@ Project created to be maintainable  reusable, testable ,scalable , DRY principle
 
 ###  Execute  update-database automatically without make it manually [ manually => 'update-database' ]  
 ### AutoMapper Used
-### Repository pattern Genric
+### Generic Repository pattern ,  Specification pattern 
 ### Clean Code
 ### unit Test - XUnit package
 
