@@ -1,0 +1,17 @@
+EndPoints
+	Accounts
+	- Accounts/register
+	- Accounts/Login
+	- Accounts/user authorized
+
+	Books
+	- Books
+	- Books/add
+	- Books/Update
+	- Books/Delete
+	- Books/CountOfBooksPerGenre
+	- Books/popular
+	- Books/totalReviews
+	Rating
+	- Ratings/add
+
