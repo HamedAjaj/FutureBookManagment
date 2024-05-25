@@ -3,7 +3,7 @@
 Project created to be maintainable  reusable, testable ,scalable , DRY principle , union architecture , auto mapper used for all
 ## Project Structure
 ## consist of 4 layers
-####	1 - API Layer or called { Presentation Layer} 	
+####	1 - API Layer or called { Presentation Layer} 	 Authorization Applied
 		- Configurations
 		- Helpers [ MappingProfile , Response class]
 		- Controllers
@@ -23,6 +23,9 @@ Project created to be maintainable  reusable, testable ,scalable , DRY principle
     - Unit Of work
 		- Config
 			- To apply constraints of Entity at Domain using fluent API instead of Data Annotation [Code Style ]
+   		- Data
+     			- DBcontext
+			- Data Seeding [ roles , Admin User , and genres]
 		- Migrations
 		- Implementation to Access Data Source
 ###	4 - Service Layer 
