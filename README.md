@@ -57,7 +57,7 @@ Project created to be maintainable  reusable, testable ,scalable , DRY principle
 ### AutoMapper Used
 ### Generic Repository pattern ,  Specification pattern 
 ### Clean Code
-### unit Test - XUnit package
+### unit Test - XUnit package  ,  InMemory package for testing
 
 ### If I find other ideas, I will write them  here.
 ### Thanks  😊  
