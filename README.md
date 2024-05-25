@@ -8,7 +8,7 @@ Project created to be maintainable  reusable, testable ,scalable , DRY principle
 	- Accounts/Login
 	- Accounts/user authorized
 
-	#### Books
+#### Books
 	- Books
 	- Books/add
 	- Books/Update
@@ -16,7 +16,7 @@ Project created to be maintainable  reusable, testable ,scalable , DRY principle
 	- Books/CountOfBooksPerGenre
 	- Books/popular
 	- Books/totalReviews
-	#### Rating
+#### Rating
 	- Ratings/add
 
 
