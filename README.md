@@ -9,7 +9,7 @@ Project created to be maintainable  reusable, testable ,scalable , DRY principle
 	- Accounts/user authorized
 
 #### Books
-	- Books
+	- Books  [ you can make any filter , sort , Search in this Endpoint]
 	- Books/add
 	- Books/Update
 	- Books/Delete
